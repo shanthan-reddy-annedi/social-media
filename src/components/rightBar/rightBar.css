@@ -1,0 +1,5 @@
+.rightBar {
+  /* flex: 25% */
+  left: 250px;
+  right: 250px;
+}
