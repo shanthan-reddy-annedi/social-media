@@ -67,6 +67,12 @@ function ChatList() {
         "https://upload.wikimedia.org/wikipedia/commons/c/c3/Olivia_Rodrigo_with_Dr_Fauci_1.png",
       last_Message: "Can you help me with the presentation?",
     },
+    {
+      name: "Olivia",
+      imgUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/c/c3/Olivia_Rodrigo_with_Dr_Fauci_1.png",
+      last_Message: "Can you help me with the presentation?",
+    },
   ];
 
   return (
@@ -80,12 +86,10 @@ function ChatList() {
               pr: 1,
               pl: 2,
               cursor: "pointer",
-              overflowY: "auto",
               display: "flex",
               alignItems: "flex-start",
               minWidth: 70,
               maxWidth: 300,
-              maxHeight: 70,
             }}
           >
             <CardMedia
