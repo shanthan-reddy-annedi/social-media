@@ -3,6 +3,7 @@
   width: 100%;
   max-width: 250px;
   transition: left 0.3s ease;
+  margin-left: 35px;
   margin-top: 50px;
   position: fixed;
   top: 0;
