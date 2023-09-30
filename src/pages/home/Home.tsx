@@ -1,22 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import TopBar from "../../components/topBar/TopBar";
-import RightBar from "../../components/rightBar/RightBar";
-import SideBar from "../../components/sideBar/SideBar";
-import Feed from "../../components/feed/Feed";
 import "./home.css";
 import HomeBar from "../../components/homeBar/HomeBar";
-import ChatList from "../../components/chatList/ChatList";
+import ChatList, { ChatListObject } from "../../components/chatList/ChatList";
+import Chat from "../../components/chat/Chat";
 
 function Home() {
+  const [selectedChat, setSelectedChat] = useState<ChatListObject | null>(null);
+
+  const handleChatCardClick = (chatData: ChatListObject) => {
+    setSelectedChat(chatData);
+  };
+
   return (
     <div>
       <TopBar />
       <div className="homeContainer">
         <HomeBar />
-        <ChatList />
-        {/* <SideBar /> */}
-        <Feed />
-        <RightBar />
+        <ChatList onChatCardClick={handleChatCardClick} />
+        {selectedChat && <Chat {...selectedChat} />}
       </div>
     </div>
   );

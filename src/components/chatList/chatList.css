@@ -26,7 +26,7 @@
 .chatListWrapper {
   overflow-y: scroll;
   height: 100%;
-  padding-bottom: 55px;
+  padding-bottom: 51px;
 }
 .chatUserName {
   font-weight: bold;
@@ -40,3 +40,4 @@
   text-overflow: ellipsis;
   max-height: 2.5em;
 }
+
