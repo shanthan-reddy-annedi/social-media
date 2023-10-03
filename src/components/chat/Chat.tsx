@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Paper,
   Grid,
@@ -21,6 +21,13 @@ const initialChatHistory = [
 function Chat(chatOptions: ChatListObject) {
   const [chatHistory, setChatHistory] = useState(initialChatHistory);
   const [newMessage, setNewMessage] = useState("");
+  const chatEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView();
+    }
+  }, [chatHistory]);
 
   const handleSendMessage = (e: any) => {
     e.preventDefault();
@@ -48,7 +55,9 @@ function Chat(chatOptions: ChatListObject) {
           <div key={index}>
             {message.user === "other" ? (
               <div className="leftChat">
-                <Typography variant="body1">{message.message}</Typography>
+                <Typography variant="body1" className="chatTextOverflow">
+                  {message.message}
+                </Typography>
                 <Typography
                   variant="caption"
                   fontSize={"10px"}
@@ -59,7 +68,9 @@ function Chat(chatOptions: ChatListObject) {
               </div>
             ) : (
               <div className="rightChat">
-                <Typography variant="body1">{message.message}</Typography>
+                <Typography variant="body1" className="chatTextOverflow">
+                  {message.message}
+                </Typography>
                 <Typography
                   variant="caption"
                   fontSize={"10px"}
@@ -71,6 +82,7 @@ function Chat(chatOptions: ChatListObject) {
             )}
           </div>
         ))}
+        <div ref={chatEndRef}></div>
       </div>
       <div className="sendMessage">
         <form onSubmit={handleSendMessage}>
@@ -78,10 +90,19 @@ function Chat(chatOptions: ChatListObject) {
             sx={{
               maxWidth: "100%",
               display: "flex",
+              border: "1px solid #ccc",
+              transition: "border-color 0.3s",
+              borderRadius: "15px",
+              "&:hover": {
+                borderColor: "blue",
+              },
+              "&:focus-within": {
+                borderColor: "green",
+              },
             }}
           >
             <InputBase
-              sx={{ ml: 2, flex: 1, borderColor: "blue" }}
+              sx={{ ml: 2, flex: 1 }}
               placeholder="Send Message"
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}

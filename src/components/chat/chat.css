@@ -8,8 +8,9 @@
   flex-direction: column;
 }
 
-.chatHistory{
+.chatHistory {
   flex-grow: 1;
+  overflow-y: auto;
 }
 
 .chatDetailBar {
@@ -18,7 +19,9 @@
 }
 
 .sendMessage {
-
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .chatDetailBarImage {
@@ -31,16 +34,21 @@
   margin-bottom: 3px;
 }
 
-.leftChat{
+.leftChat {
   text-align: left;
   margin-left: 15px;
   padding-top: 10px;
   width: 40%;
 }
 
-.rightChat{
+.rightChat {
   text-align: right;
   margin-right: 15px;
-  margin-top: 5px;
-  /* background-color: aqua; */
+  margin-left: auto;
+  max-width: 50%;
+  margin-top: 10px;
+}
+
+.chatTextOverflow {
+  white-space: normal;
 }
